@@ -1,4 +1,6 @@
+import { Button, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
+
 import { useStore } from 'stadux-react';
 import CountdownCircle from '../components/CountdownCircle';
 import {
@@ -9,6 +11,7 @@ import {
 
 export default function Home() {
   const isCountdownRunning = useStore(isCountdownRunningStore);
+
   return (
     <>
       <Head>
@@ -17,23 +20,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col">
+      <Flex as="main" minH="100vh" alignItems="center" justifyContent="center">
+        <Flex flexDir="column">
           <CountdownCircle />
 
-          <div className="mt-4 flex justify-center">
-            <button
-              type="button"
-              className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none "
+          <Flex mt="4" justifyContent="center">
+            <Button
+              colorScheme="blue"
               onClick={() =>
                 isCountdownRunning ? endCountdownEvent() : startCountdownEvent()
               }
             >
               {isCountdownRunning ? 'End focus' : 'Start focus'}
-            </button>
-          </div>
-        </div>
-      </main>
+            </Button>
+          </Flex>
+        </Flex>
+      </Flex>
     </>
   );
 }
