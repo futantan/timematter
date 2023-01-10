@@ -3,18 +3,28 @@ import {
   CircularProgressLabel,
   Text,
 } from '@chakra-ui/react';
+import { useEffect } from 'react';
 
 import { useStore } from 'stadux-react';
 import {
+  countdownStore,
+  endCountdownEvent,
   isCountdownRunningStore,
   timesRemainingLabelStore,
   timesRemainingPercentageStore,
 } from '../store/pomoStore';
 
 const CountdownCircle = () => {
+  const countdown = useStore(countdownStore);
   const timesRemainingLabel = useStore(timesRemainingLabelStore);
   const timesRemainingPercentage = useStore(timesRemainingPercentageStore);
   const isCountdownRunning = useStore(isCountdownRunningStore);
+
+  useEffect(() => {
+    if (countdown <= 0) {
+      endCountdownEvent();
+    }
+  }, [countdown]);
 
   return (
     <CircularProgress
