@@ -6,6 +6,7 @@ import {
 
 import { useStore } from 'stadux-react';
 import {
+  isCountdownRunningStore,
   timesRemainingLabelStore,
   timesRemainingPercentageStore,
 } from '../store/pomoStore';
@@ -13,6 +14,7 @@ import {
 const CountdownCircle = () => {
   const timesRemainingLabel = useStore(timesRemainingLabelStore);
   const timesRemainingPercentage = useStore(timesRemainingPercentageStore);
+  const isCountdownRunning = useStore(isCountdownRunningStore);
 
   return (
     <CircularProgress
@@ -26,9 +28,11 @@ const CountdownCircle = () => {
         <Text fontSize="5xl" fontWeight="bold">
           {timesRemainingLabel}
         </Text>
-        <Text fontSize="sm" color="gray.300">
-          Focus time remaining
-        </Text>
+        {isCountdownRunning && (
+          <Text fontSize="sm" color="gray.300">
+            Focus time remaining
+          </Text>
+        )}
       </CircularProgressLabel>
     </CircularProgress>
   );
