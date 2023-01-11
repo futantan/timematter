@@ -30,6 +30,7 @@ export default function Home() {
 
           <Flex mt="4" justifyContent="center">
             <Button
+              variant={isCountdownRunning ? 'outline' : 'solid'}
               colorScheme="green"
               onClick={() =>
                 isCountdownRunning ? endCountdownEvent() : startCountdownEvent()
