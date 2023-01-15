@@ -1,18 +1,19 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { useAtom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
 import Head from 'next/head';
-
 import { useStore } from 'stadux-react';
-import CountdownCircle from '../components/CountdownCircle';
-import LofiPlayer from '../components/LofiPlayer';
+import ClientOnly from '../components/ClientOnly';
+import Pomo from '../components/Pomo';
 import Background from '../components/shared/Background';
-import {
-  endCountdownEvent,
-  isCountdownRunningStore,
-  startCountdownEvent,
-} from '../store/pomoStore';
+import { isCountdownRunningStore } from '../store/pomoStore';
+
+const musicOnAtom = atomWithStorage('musicOn', true);
 
 export default function Home() {
   const isCountdownRunning = useStore(isCountdownRunningStore);
+  // Consume persisted state like any other atom
+  const [isMusicOn, setMusic] = useAtom(musicOnAtom);
+  const toggleLofiMusic = () => setMusic(!isMusicOn);
 
   return (
     <>
@@ -23,26 +24,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {isCountdownRunning && <LofiPlayer />}
-
       <Background />
-      <Flex as="main" minH="100vh" alignItems="center" justifyContent="center">
-        <Flex flexDir="column">
-          <CountdownCircle />
 
-          <Flex mt="4" justifyContent="center">
-            <Button
-              variant={isCountdownRunning ? 'outline' : 'solid'}
-              colorScheme="green"
-              onClick={() =>
-                isCountdownRunning ? endCountdownEvent() : startCountdownEvent()
-              }
-            >
-              {isCountdownRunning ? 'End focus' : 'Start focus'}
-            </Button>
-          </Flex>
-        </Flex>
-      </Flex>
+      <ClientOnly>
+        <Pomo />
+      </ClientOnly>
     </>
   );
 }
