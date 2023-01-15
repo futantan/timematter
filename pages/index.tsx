@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useStore } from 'stadux-react';
 import CountdownCircle from '../components/CountdownCircle';
 import LofiPlayer from '../components/LofiPlayer';
+import Background from '../components/shared/Background';
 import {
   endCountdownEvent,
   isCountdownRunningStore,
@@ -24,6 +25,7 @@ export default function Home() {
 
       {isCountdownRunning && <LofiPlayer />}
 
+      <Background />
       <Flex as="main" minH="100vh" alignItems="center" justifyContent="center">
         <Flex flexDir="column">
           <CountdownCircle />

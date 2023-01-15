@@ -32,6 +32,7 @@ const CountdownCircle = () => {
       thickness="6px"
       size={300}
       value={timesRemainingPercentage}
+      trackColor="#ebebeb"
       color="green.400"
     >
       <CircularProgressLabel>
