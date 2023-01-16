@@ -1,20 +1,8 @@
-import { useAtom } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
 import Head from 'next/head';
-import { useStore } from 'stadux-react';
-import ClientOnly from '../components/ClientOnly';
 import Pomo from '../components/Pomo';
 import Background from '../components/shared/Background';
-import { isCountdownRunningStore } from '../store/pomoStore';
-
-const musicOnAtom = atomWithStorage('musicOn', true);
 
 export default function Home() {
-  const isCountdownRunning = useStore(isCountdownRunningStore);
-  // Consume persisted state like any other atom
-  const [isMusicOn, setMusic] = useAtom(musicOnAtom);
-  const toggleLofiMusic = () => setMusic(!isMusicOn);
-
   return (
     <>
       <Head>
@@ -26,9 +14,7 @@ export default function Home() {
 
       <Background />
 
-      <ClientOnly>
-        <Pomo />
-      </ClientOnly>
+      <Pomo />
     </>
   );
 }

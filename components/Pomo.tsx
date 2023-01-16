@@ -1,6 +1,4 @@
 import { Box, Button, Flex, IconButton } from '@chakra-ui/react';
-import { useAtom } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
 import { useStore } from 'stadux-react';
 import CountdownCircle from '../components/CountdownCircle';
 import VolumeOffIcon from '../components/icon/VolumeOffIcon';
@@ -11,14 +9,11 @@ import {
   isCountdownRunningStore,
   startCountdownEvent,
 } from '../store/pomoStore';
-
-const musicOnAtom = atomWithStorage('musicOn', true);
+import { shouldMusicOnStore, toggleMusicEvent } from '../store/userConfigStore';
 
 export default function Pomo() {
   const isCountdownRunning = useStore(isCountdownRunningStore);
-  // Consume persisted state like any other atom
-  const [isMusicOn, setMusic] = useAtom(musicOnAtom);
-  const toggleLofiMusic = () => setMusic(!isMusicOn);
+  const isMusicOn = useStore(shouldMusicOnStore);
 
   return (
     <>
@@ -37,7 +32,7 @@ export default function Pomo() {
               <IconButton
                 aria-label="volume on icon"
                 icon={isMusicOn ? <VolumeOnIcon /> : <VolumeOffIcon />}
-                onClick={toggleLofiMusic}
+                onClick={() => toggleMusicEvent()}
               />
             ) : null}
           </Box>
