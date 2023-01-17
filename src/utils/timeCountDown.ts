@@ -1,4 +1,4 @@
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import durationPlugin from 'dayjs/plugin/duration';
 
 dayjs.extend(durationPlugin);
