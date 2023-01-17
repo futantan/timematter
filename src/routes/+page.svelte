@@ -33,7 +33,7 @@
 <div class="w-full min-h-screen flex flex-col items-center justify-center">
 	<div class="flex flex-col items-center">
 		<div>
-			<CircularProgress value={0}>
+			<CircularProgress value={(countdown / TWENTY_FIVE_MINUTES) * 100}>
 				<div class="text-5xl font-bold">{timeCountDown(countdown)}</div>
 			</CircularProgress>
 		</div>
