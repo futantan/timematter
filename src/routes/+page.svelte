@@ -23,6 +23,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>{isTicking ? `[${timeCountDown(countdown)}]` : 'Timematter'}</title>
+</svelte:head>
+
 <BackgroundLayer />
 
 {#if isTicking}
