@@ -38,7 +38,9 @@
 	<div class="flex flex-col items-center">
 		<div>
 			<CircularProgress value={(countdown / TWENTY_FIVE_MINUTES) * 100}>
-				<div class="text-5xl font-bold">{timeCountDown(countdown)}</div>
+				<div class="countdown-label font-bold text-gray-800 dark:text-gray-200">
+					{timeCountDown(countdown)}
+				</div>
 			</CircularProgress>
 		</div>
 		<button
@@ -54,3 +56,9 @@
 		</button>
 	</div>
 </div>
+
+<style>
+	.countdown-label {
+		font-size: min(20vw, 58px);
+	}
+</style>

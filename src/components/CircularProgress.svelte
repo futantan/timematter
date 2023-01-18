@@ -15,7 +15,7 @@
 </script>
 
 <div class="relative inline-block">
-	<svg viewBox={`0 0 ${VIEW_SIZE} ${VIEW_SIZE}`} class="w-72 h-72">
+	<svg viewBox={`0 0 ${VIEW_SIZE} ${VIEW_SIZE}`} class="max-w-xs max-h-80 w-full h-full">
 		<circle
 			cx={VIEW_SIZE / 2}
 			cy={VIEW_SIZE / 2}
