@@ -3,7 +3,7 @@
 
 	const TITLE = 'Timematter';
 	const DESC = 'Timematter - Pomodoro with Lofi music';
-	const IMAGE = '%sveltekit.assets%/images/og.png';
+	const IMAGE = '/images/og.png';
 </script>
 
 <svelte:head>
@@ -11,7 +11,7 @@
 	<meta name="description" content={DESC} />
 
 	<meta itemProp="image" content={IMAGE} />
-	<meta property="og:logo" content="%sveltekit.assets%/images/og.png" />
+	<meta property="og:logo" content="/images/og.png" />
 	<meta property="og:title" content={DESC} />
 	<meta property="og:description" content={DESC} />
 	<meta property="og:image" content={IMAGE} />
