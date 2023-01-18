@@ -1,16 +1,27 @@
 <script>
 	import '../app.css';
+
+	const TITLE = 'Timematter';
+	const DESC = 'Timematter - Pomodoro with Lofi music';
+	const IMAGE = '%sveltekit.assets%/images/og.png';
 </script>
 
 <svelte:head>
-	<!-- TODO: -->
-	<!-- i18n for meta tags -->
-	<title>Timematter</title>
-	<!-- <meta name="description" content={$t('website-desc')} /> -->
-	<!-- <meta name="twitter:description" content={desc} /> -->
-	<!-- <meta name="twitter:title" content={title} /> -->
-	<!-- <meta property="og:title" content={title} /> -->
-	<!-- <meta property="og:description" content={desc} /> -->
+	<title>{TITLE}</title>
+	<meta name="description" content={DESC} />
+
+	<meta itemProp="image" content={IMAGE} />
+	<meta property="og:logo" content="%sveltekit.assets%/images/og.png" />
+	<meta property="og:title" content={DESC} />
+	<meta property="og:description" content={DESC} />
+	<meta property="og:image" content={IMAGE} />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="http://futantan.com/" />
+	<meta name="twitter:creator" content="@EclipsePrayer" />
+	<meta name="twitter:title" content={DESC} />
+	<meta name="twitter:description" content={DESC} />
+	<meta name="twitter:image" content={IMAGE} />
 </svelte:head>
 
 <slot />
