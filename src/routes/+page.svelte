@@ -20,6 +20,9 @@
 
 	function handleTick() {
 		countdown--;
+		if (countdown <= 0) {
+			handleStop();
+		}
 	}
 </script>
 
